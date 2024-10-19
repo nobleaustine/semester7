@@ -124,9 +124,7 @@ laplacian_4 = apply_laplacian(image, connected_type='4-connected')
 laplacian_8 = apply_laplacian(image, connected_type='8-connected')
 
 # Display the Results
-show_images([image, sp_noise_img, gaussian_noise_img], ["Original", "Salt & Pepper Noise", "Gaussian Noise"], "Image and Noises")
-show_images([mean_filtered_sp, median_filtered_sp, gaussian_filtered_sp, mean_filtered_g, median_filtered_g, gaussian_filtered_g],
-            ["Mean Filter", "Median Filter", "Gaussian Filter", "Mean Filter", "Median Filter", "Gaussian Filter"], "Filtered Images")
-show_images([image, sharpened_image], ["Original", "Sharpened Image"], "Sharpened Image Comparison")
-show_images([laplacian_4, laplacian_8], ["Laplacian (4-connected)", "Laplacian (8-connected)"], "Laplacian Edge Detection")
-
+show_images([image, sp_noise_img, gaussian_noise_img], ["Original", "Salt & Pepper Noise", "Gaussian Noise"],"Image and Noises")
+show_images([mean_filtered_sp, median_filtered_sp, gaussian_filtered_sp,mean_filtered_g, median_filtered_g, gaussian_filtered_g,], ["Mean Filter", "Median Filter", "Gaussian Filter","Mean Filter", "Median Filter", "Gaussian Filter"],"Salt & Pepper Noise and Gaussian Noise")
+show_images([image, sharpened_image], ["Original", "Sharpened Image"],"Sharpening filter")
+show_images([laplacian_4, laplacian_8], ["Laplacian (4-connected)", "Laplacian (8-connected)"],"Laplacian Edge Detection")
