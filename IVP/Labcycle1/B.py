@@ -7,10 +7,6 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-# load image
-def load_image(image_path):
-    return cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-
 # log transformation
 def log_transform(image, c=1):
 
@@ -20,12 +16,12 @@ def log_transform(image, c=1):
 
     return np.uint8(log_image_normalized)
 
-def calculate_c_from_image(image):
+def calcualte_c(image):
     max_intensity = np.max(image)
     c = 255 / np.log(1 + max_intensity)
     return c
 
-def plot_images(original, transformed,title):
+def display(original, transformed,title):
 
     plt.figure(figsize=(10, 5))
     plt.suptitle(title, fontsize=16)
@@ -45,7 +41,7 @@ def plot_images(original, transformed,title):
     plt.show()
 
 # compare with different 'c' values
-def experiment_with_c(image, c_values,title):
+def compare(image, c_values,title):
 
     total_plots = len(c_values) + 1
     
@@ -67,16 +63,18 @@ def experiment_with_c(image, c_values,title):
 
     plt.show()
 
-def process_image(image_path):
-    original_image = load_image(image_path)
+def process(image_path):
+    original_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     
     transformed_image = log_transform(original_image, c=1)
-    plot_images(original_image, transformed_image, 'Log Transformation')
+    display(original_image, transformed_image, 'Log Transformation')
 
-    c_calc=calculate_c_from_image(original_image)
+    c_calc=calcualte_c(original_image)
 
     c_values = [0.5,1.75,18,50,c_calc]
-    experiment_with_c(original_image, c_values,"Different c values")
+    compare(original_image, c_values,"Different c values")
 
-image_path = '../images/low_contrast_img.jpeg'  
-process_image(image_path)
+if __name__ == "__main__":
+    image_path = '../images/low_contrast_img.jpeg'  
+    process(image_path)
+
