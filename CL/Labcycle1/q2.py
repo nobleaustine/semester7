@@ -1,12 +1,12 @@
-#  2. Design and implement a Finite State Automata(FSA) that accepts English plural nouns
-#     ending with the character ‘y’, e.g. boys, toys, ponies, skies, and puppies but not boies or
-#     toies or ponys. (Hint: Words that end with a vowel followed by ‘y’ are appended with ‘s'
-#     and will not be replaced with “ies” in their plural form).
+# 2. Design and implement a Finite State Automata(FSA) that accepts English plural nouns
+#    ending with the character ‘y’, e.g. boys, toys, ponies, skies, and puppies but not boies or
+#    toies or ponys. (Hint: Words that end with a vowel followed by ‘y’ are appended with ‘s'
+#    and will not be replaced with “ies” in their plural form).
 
 import re
 
 # state of FSA
-class state():
+class State():
     def __init__(self, name):
         self.name = name
         self.transitions = {}
@@ -24,7 +24,7 @@ class state():
 # Finite State Automata
 class FSA():
 
-    def __init__(self,states, alphabet, transition, start, accept):
+    def __init__(self,states, alphabet, start, accept):
         self.states = states
         self.alphabet = alphabet
         self.start = start
@@ -50,12 +50,12 @@ class FSA():
 def main():
 
     # setup for the FSA
-    q0 = state('q0')
-    q1 = state('q1')
-    q2 = state('q2')
-    q3 = state('q3')
-    q4 = state('q4')
-    q5 = state('q5')
+    q0 = State('q0')
+    q1 = State('q1')
+    q2 = State('q2')
+    q3 = State('q3')
+    q4 = State('q4')
+    q5 = State('q5')
 
     q0.add_transition([r"[aeiouAEIOU]",r"[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]"], [q1,q2])
     q1.add_transition([r"[aeiou]",r"[b-df-hj-np-tv-xz]",r"[y]"], [q1,q2,q3])
@@ -65,7 +65,7 @@ def main():
     q5.add_transition([r"[aeou]",r"[b-df-hj-np-tv-z]",r"[i]"], [q1,q3,q4])
     
 
-    fsa = FSA([q0,q1,q2,q3,q4,q5], [r"[A-Za-z]"], None, q0, [q5])
+    fsa = FSA([q0,q1,q2,q3,q4,q5], [r"[A-Za-z]"], q0, [q5])
     cflag = True
     print(" ")
     print("            Finite State Automata")
