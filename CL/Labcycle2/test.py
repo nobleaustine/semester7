@@ -5,3 +5,6 @@
 # q4.add_transition([r"[a-z]"], [q1])
 # q5.add_transition([r"[a-df-hj-xz]",r"[ye]",r"[i]"], [q1,q3,q5])
 # q6.add_transition([r"[A-Za-z]"], [q1])
+import re
+if re.search(r"[/]","/"):
+    print("yahooooo")
