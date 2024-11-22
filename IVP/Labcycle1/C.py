@@ -63,3 +63,4 @@ image_paths = [
 gamma_values = [0.2, 0.3, 0.4, 0.6,1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
 
 experiment_with_images(image_paths, gamma_values)
+
