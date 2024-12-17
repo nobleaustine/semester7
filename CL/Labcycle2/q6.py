@@ -2,7 +2,6 @@
 #    Add-k smoothing to handle zero probabilities. Compare the performance of your
 #    classifier for k values 0.25, 0.75, and 1
 
-from matplotlib.cbook import pts_to_poststep
 import pandas as pd
 import re
 from collections import defaultdict

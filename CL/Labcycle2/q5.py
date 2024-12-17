@@ -48,8 +48,8 @@ def corrector(sentence):
         if word not in counts:
             candidates = edit1d(word)
             for candidate in candidates:
-                pb_a = math.log(counts[candidate][sentence[i+1]]+a)/(len(counts[candidate])+a*len(counts))
-                pb_b = math.log(counts[sentence[i-1]][candidate]+a)/(len(counts[sentence[i-1]])+a*len(counts))
+                pb_a = math.log(counts[candidate][sentence[i+1]]+a)/(sum(counts[candidate].values())+a*len(counts))
+                pb_b = math.log(counts[sentence[i-1]][candidate]+a)/(sum(counts[sentence[i-1].values()])+a*len(counts))
                 values[candidate] = pb_a + pb_b
             value = max(values, key=values.get)    
             corrected_senentce += value + " "
@@ -80,10 +80,6 @@ def main():
         flag = input("Continue? (y/n): ")
         print(" ")
 
-    
-
-    
-    
 if __name__ == "__main__":
     main()
 
